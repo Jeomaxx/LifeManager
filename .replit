@@ -1,4 +1,4 @@
-modules = ["php-8.3", "nodejs-20"]
+modules = ["php-8.2", "web", "nodejs-20"]
 
 [nix]
 channel = "stable-25_05"
@@ -46,3 +46,6 @@ outputType = "console"
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[agent]
+expertMode = true
