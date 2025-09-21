@@ -1,0 +1,123 @@
+You are an expert full-stack PHP developer. I want you to build a fully functional production-ready web application called Life Atlas Organizer, entirely in PHP (with a modern MVC framework or pure PHP if needed).
+
+System Description:
+
+The Life Atlas Organizer is a personal life management web app that helps users organize their lives in one place.
+
+Key functionalities:
+
+Task and goal management
+
+Calendar and schedule tracking
+
+Notes and document storage
+
+Data visualization dashboards for progress tracking
+
+Personal reminders and notifications
+
+Technical Requirements:
+
+Backend: PHP 8+ with MVC structure (or Laravel if you want a framework).
+
+Frontend: HTML5, CSS3, JavaScript, with TailwindCSS for styling.
+
+Database: MySQL or PostgreSQL for user data, tasks, notes, and schedules.
+
+Authentication: Secure login system with password hashing (bcrypt/argon2).
+
+Offline Support: Enable offline mode with service workers + local storage.
+
+API-ready: RESTful API endpoints for tasks, schedules, and notes.
+
+Dashboard: A clean, modern dashboard with charts and analytics.
+
+Core Features to Implement:
+
+Task Manager
+
+Create, edit, delete, categorize, and prioritize tasks.
+
+Set deadlines and recurring tasks.
+
+Mark tasks as complete with progress tracking.
+
+Goal & Habit Tracker
+
+Create personal or professional goals.
+
+Daily/weekly habit tracking with streak counters.
+
+Calendar & Scheduling
+
+Interactive calendar with drag-and-drop events.
+
+Email reminders and optional push notifications.
+
+Notes & Personal Journal
+
+Rich-text notes with tags and search.
+
+Option to attach images or files.
+
+Data Visualization
+
+Task completion charts.
+
+Goal progress graphs.
+
+Time usage analytics.
+
+Export & Backup
+
+Export user data as JSON/CSV/PDF.
+
+Cloud backup integration (Google Drive, Dropbox).
+
+Theme & Customization
+
+Light/Dark modes.
+
+User-defined color schemes.
+
+Multi-User Support
+
+Personal workspaces for each user.
+
+Role-based access control (e.g., Admin/User).
+
+AI-Assisted Insights (Optional)
+
+Suggest goal deadlines based on past data.
+
+Summarize journal entries into insights.
+
+Security & Privacy
+
+CSRF, XSS, and SQL Injection prevention.
+
+GDPR-compliant data handling.
+
+Additional Suggested Features:
+
+Gamification: Achievements, points, and badges for completed tasks.
+
+Collaboration: Share tasks/goals with other users in real time.
+
+Voice Notes: Record and save audio notes.
+
+Integration: Sync with Google Calendar, Notion, or Trello.
+
+Mobile Responsiveness: Fully optimized for mobile use.
+
+Deliverables Expected:
+
+Full PHP source code in a clean MVC or Laravel structure.
+
+MySQL database schema with seed data for demo.
+
+Installation guide for local and production setups.
+
+Full documentation for users and developers.
+
+Production-ready version with minified assets, caching, and security best practices.
