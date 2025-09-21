@@ -24,6 +24,20 @@ Route::middleware('auth')->group(function () {
     
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
+    // Theme management
+    Route::get('api/theme', [\App\Http\Controllers\ThemeController::class, 'index']);
+    Route::post('api/theme', [\App\Http\Controllers\ThemeController::class, 'update']);
+    Route::post('api/theme/reset', [\App\Http\Controllers\ThemeController::class, 'reset']);
+    
+    // Download routes
+    Route::get('download/backup/{file}', function($file) {
+        $path = storage_path('app/temp/' . $file);
+        if (file_exists($path)) {
+            return response()->download($path)->deleteFileAfterSend(true);
+        }
+        abort(404);
+    })->name('download.backup');
+    
     // Task management routes
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);
     Route::post('tasks/{task}/complete', [\App\Http\Controllers\TaskController::class, 'complete'])->name('tasks.complete');

@@ -289,8 +289,6 @@ class CalendarController extends Controller
             ->count() > 0;
         
         if ($conflicts || $instanceConflicts) {
-        
-        if ($conflicts) {
             return response()->json([
                 'success' => false,
                 'message' => 'Cannot move event due to time conflicts with existing events.'
