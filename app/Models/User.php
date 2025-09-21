@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,5 +46,77 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the user's preferences.
+     */
+    public function preferences(): HasOne
+    {
+        return $this->hasOne(UserPreferences::class);
+    }
+
+    /**
+     * Get the user's categories.
+     */
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    /**
+     * Get the user's tasks.
+     */
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    /**
+     * Get the user's goals.
+     */
+    public function goals(): HasMany
+    {
+        return $this->hasMany(Goal::class);
+    }
+
+    /**
+     * Get the user's habits.
+     */
+    public function habits(): HasMany
+    {
+        return $this->hasMany(Habit::class);
+    }
+
+    /**
+     * Get the user's notes.
+     */
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    /**
+     * Get the user's calendar events.
+     */
+    public function calendarEvents(): HasMany
+    {
+        return $this->hasMany(CalendarEvent::class);
+    }
+
+    /**
+     * Get the user's tags.
+     */
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
+    }
+
+    /**
+     * Get the user's attachments.
+     */
+    public function attachments(): HasMany
+    {
+        return $this->hasMany(Attachment::class);
     }
 }
