@@ -46,4 +46,21 @@ Route::middleware('auth')->group(function () {
     Route::post('habits/{habit}/log-skip', [\App\Http\Controllers\HabitController::class, 'logSkip'])->name('habits.log-skip');
     Route::patch('habits/{habit}/toggle-status', [\App\Http\Controllers\HabitController::class, 'toggleStatus'])->name('habits.toggle-status');
     Route::get('api/habits/analytics', [\App\Http\Controllers\HabitController::class, 'analytics'])->name('habits.analytics');
+    
+    // Calendar & Scheduling routes
+    Route::resource('calendar', \App\Http\Controllers\CalendarController::class);
+    Route::patch('calendar/{calendar}/move', [\App\Http\Controllers\CalendarController::class, 'move'])->name('calendar.move');
+    Route::patch('calendar/{calendar}/resize', [\App\Http\Controllers\CalendarController::class, 'resize'])->name('calendar.resize');
+    Route::get('api/calendar/events', [\App\Http\Controllers\CalendarController::class, 'getEvents'])->name('calendar.events');
+    Route::post('api/calendar/quick-create', [\App\Http\Controllers\CalendarController::class, 'quickCreate'])->name('calendar.quick-create');
+    Route::get('api/calendar/analytics', [\App\Http\Controllers\CalendarController::class, 'analytics'])->name('calendar.analytics');
+    
+    // Notes & Personal Journal routes
+    Route::resource('notes', \App\Http\Controllers\NoteController::class);
+    Route::patch('notes/{note}/toggle-favorite', [\App\Http\Controllers\NoteController::class, 'toggleFavorite'])->name('notes.toggle-favorite');
+    Route::patch('notes/{note}/toggle-pin', [\App\Http\Controllers\NoteController::class, 'togglePin'])->name('notes.toggle-pin');
+    Route::patch('notes/{note}/toggle-archive', [\App\Http\Controllers\NoteController::class, 'toggleArchive'])->name('notes.toggle-archive');
+    Route::get('api/notes/search', [\App\Http\Controllers\NoteController::class, 'search'])->name('notes.search');
+    Route::get('api/notes/analytics', [\App\Http\Controllers\NoteController::class, 'analytics'])->name('notes.analytics');
+    Route::get('api/notes/export', [\App\Http\Controllers\NoteController::class, 'export'])->name('notes.export');
 });
