@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ class ThemeController extends Controller
      */
     public function index(): JsonResponse
     {
+        /** @var User $user */
         $user = Auth::user();
         $preferences = $user->preferences ?? $user->preferences()->create([
             'theme' => 'system',
@@ -55,6 +57,7 @@ class ThemeController extends Controller
             'sidebar_collapsed' => 'boolean',
         ]);
         
+        /** @var User $user */
         $user = Auth::user();
         $preferences = $user->preferences ?? $user->preferences()->create([]);
         
@@ -76,6 +79,7 @@ class ThemeController extends Controller
      */
     public function reset(): JsonResponse
     {
+        /** @var User $user */
         $user = Auth::user();
         $preferences = $user->preferences ?? $user->preferences()->create([]);
         
