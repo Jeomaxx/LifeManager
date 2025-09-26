@@ -1,8 +1,6 @@
 const CACHE_NAME = 'productivity-app-v1';
 const urlsToCache = [
     '/',
-    '/build/assets/app.css',
-    '/build/assets/app.js',
     '/manifest.json'
 ];
 

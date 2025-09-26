@@ -1,4 +1,6 @@
-<x-layouts.app>
+@extends('layouts.app')
+
+@section('content')
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Habits Header -->
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg mb-6">
@@ -352,4 +354,4 @@
             }
         });
     </script>
-</x-layouts.app>
+@endsection
