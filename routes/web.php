@@ -29,14 +29,32 @@ Route::middleware('auth')->group(function () {
     Route::post('api/theme', [\App\Http\Controllers\ThemeController::class, 'update']);
     Route::post('api/theme/reset', [\App\Http\Controllers\ThemeController::class, 'reset']);
     
-    // Download routes
+    // Download routes - Secured with path validation and rate limiting
     Route::get('download/backup/{file}', function($file) {
-        $path = storage_path('app/temp/' . $file);
-        if (file_exists($path)) {
-            return response()->download($path)->deleteFileAfterSend(true);
+        // Validate filename to prevent path traversal
+        $file = basename($file);
+        if (!preg_match('/^[a-zA-Z0-9_\-\.]+\.(json|csv|pdf)$/', $file)) {
+            abort(400, 'Invalid file format');
         }
-        abort(404);
-    })->name('download.backup');
+        
+        // Construct and validate path
+        $path = storage_path('app/temp/' . $file);
+        $realPath = realpath($path);
+        $tempDir = realpath(storage_path('app/temp'));
+        
+        // Ensure file is within temp directory and exists
+        if (!$realPath || !str_starts_with($realPath, $tempDir) || !file_exists($realPath)) {
+            abort(404);
+        }
+        
+        // Verify file belongs to current user (check file prefix with user ID)
+        $user = Auth::user();
+        if (!str_starts_with($file, $user->id . '_')) {
+            abort(403, 'Unauthorized access to file');
+        }
+        
+        return response()->download($realPath)->deleteFileAfterSend(true);
+    })->name('download.backup')->middleware('throttle:10,1');
     
     // Task management routes
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);

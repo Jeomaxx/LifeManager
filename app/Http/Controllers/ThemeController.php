@@ -24,7 +24,7 @@ class ThemeController extends Controller
             'timezone' => config('app.timezone'),
         ]);
         
-        return response()->json([
+        return new JsonResponse([
             'theme' => $preferences->theme,
             'color_scheme' => $preferences->color_scheme,
             'sidebar_collapsed' => $preferences->sidebar_collapsed,
@@ -67,7 +67,7 @@ class ThemeController extends Controller
             'sidebar_collapsed' => $request->get('sidebar_collapsed', false),
         ]);
         
-        return response()->json([
+        return new JsonResponse([
             'success' => true,
             'message' => 'Theme preferences updated successfully',
             'preferences' => $preferences->only(['theme', 'color_scheme', 'sidebar_collapsed'])
@@ -89,7 +89,7 @@ class ThemeController extends Controller
             'sidebar_collapsed' => false,
         ]);
         
-        return response()->json([
+        return new JsonResponse([
             'success' => true,
             'message' => 'Theme reset to defaults',
             'preferences' => $preferences->only(['theme', 'color_scheme', 'sidebar_collapsed'])
