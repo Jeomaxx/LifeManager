@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
             abort(403, 'Unauthorized access to file');
         }
         
-        return response()->download($realPath)->deleteFileAfterSend(true);
+        return response()->download($realPath, basename($file))->deleteFileAfterSend(true);
     })->name('download.backup')->middleware('throttle:10,1');
     
     // Task management routes
